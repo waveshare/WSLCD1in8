@@ -1,10 +1,10 @@
 /*****************************************************************************
-* | File      	:	WS1in8LCD
+* | File      	:   WS1in8LCD
 * | Author      :   Waveshare team
-* | Function    :	Contorl lcd Show
+* | Function    :   Contorl lcd Show
 * | Info        :
 *----------------
-* |	This version:   V1.0
+* | This version:   V1.0
 * | Date        :   2018-02-22
 * | Info        :   Basic version
 *
@@ -53,7 +53,7 @@ namespace LCD1IN8 {
         return;
     }
     
-	//% blockId=LCD_Init
+    //% blockId=LCD_Init
     //% blockGap=8
     //% block="LCD1IN8 Init"
     //% shim=LCD1IN8::Init
@@ -134,7 +134,7 @@ namespace LCD1IN8 {
     
     /*
     * Draw a rectangle
-	*/
+    */
     //% blockId=DrawRectangle
     //% blockGap=8
     //% block="Draw Rectangle|Xstart2 %Xstart2|Ystart2 %Ystart2|Xend2 %Xend2|Yend2 %Yend2|Color %Color|Filled %Filled |Line width %Dot_Pixel"
@@ -161,8 +161,8 @@ namespace LCD1IN8 {
     }
 
     /*
-	* Use the 8-point method to draw a circle of the
-	*/
+    * Use the 8-point method to draw a circle of the
+    */
     //% blockId=DrawCircle
     //% blockGap=8
     //% block="Draw Circle|X_Center %X_Center |Y_Center %Y_Center |Radius %Radius|Color %Color|Filled %Draw_Fill|Line width %Dot_Pixel "
@@ -222,4 +222,43 @@ namespace LCD1IN8 {
         }
     }
 
+    
+    //% blockId=DisChar
+    //% blockGap=8
+    //% block="show Char|X %Xchar|Y %Ychar|char %ch|font %chfont|Foreground %Color_Foreground|Background %Color_Background"
+    //% Xchar.min=0 Xchar.max=159 Ychar.min=0 Ychar.max=63 
+    //% Color_Foreground.min=0 Color_Foreground.max=65535
+    //% Color_Background.min=0 Color_Background.max=65535
+    //% weight=140
+    export function DisChar(Xchar: number, Ychar: number, ch: string, chfont: CHARFONT, Color_Foreground: number, Color_Background: number){
+        let Font_Height = GetFontHeight(chfont);
+        let Font_Width = GetFontWidth(chfont);
+
+        let ch_asicc =  ch.charCodeAt(0);
+        let Char_Offset = ch_asicc * Font_Height *(Font_Width / 8 +(Font_Width % 8 ? 1 : 0));
+        
+        let ptr = GetFontData(chfont, Char_Offset);
+
+        let Page = 0;
+        let Column = 0;
+        for(Page = 0; Page < Font_Height; Page ++ ) {
+            for(Column = 0; Column < Font_Width; Column ++ ) {
+                if(FONT_BACKGROUND_COLOR == Color_Background) {
+                    if(ptr &(0x80 >>(Column % 8)))
+                        DrawPoint(Xchar + Column, Ychar + Page, Color_Foreground, DOT_PIXEL.DOT_PIXEL_1);
+                } else {
+                    if(ptr &(0x80 >>(Column % 8))) {
+                        DrawPoint(Xchar + Column, Ychar + Page, Color_Foreground, DOT_PIXEL.DOT_PIXEL_1);
+                    } else {
+                        DrawPoint(Xchar + Column, Ychar + Page, Color_Background, DOT_PIXEL.DOT_PIXEL_1);
+                    }
+                }
+                //One pixel is 8 bits
+                if(Column % 8 == 7)
+                    ptr = GetFontData(chfont, Char_Offset + 1);
+            }// Write a line
+            if(Font_Width % 8 != 0)
+                ptr = GetFontData(chfont, Char_Offset + 1);
+        }// Write all
+    }
 }
