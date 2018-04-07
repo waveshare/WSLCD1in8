@@ -1,0 +1,30 @@
+{
+    "name": "LCD1in8",
+    "version": "0.0.0",
+    "description": "waveshare electronics",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*",
+        "radio": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts",
+        "LCD1IN8.cpp",
+        "LCD1IN8.ts",
+		"LCD_Driver.cpp",
+		"LCD_Driver.h",
+        "LCD_GUI.cpp",
+		"LCD_GUI.h",
+        "font8.cpp",
+        "font12.cpp",
+        "font16.cpp",
+        "fonts.h",
+        "shims.d.ts",
+        "enums.d.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": false
+}
