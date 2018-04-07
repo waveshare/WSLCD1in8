@@ -222,43 +222,4 @@ namespace LCD1IN8 {
         }
     }
 
-    //% blockId=DisChar
-    //% blockGap=8
-    //% block="show Char|X %Xchar|Y %Ychar|char %ch|font %chfont|Foreground %Color_Foreground|Background %Color_Background"
-    //% Xchar.min=0 Xchar.max=159 Ychar.min=0 Ychar.max=63 
-    //% Color_Foreground.min=0 Color_Foreground.max=65535
-    //% Color_Background.min=0 Color_Background.max=65535
-    //% weight=140
-    export function DisChar(Xchar: number, Ychar: number, ch: string, chfont: CHARFONT, Color_Foreground: number, Color_Background: number){
-        let Font_Height = GetFontHeight(chfont);
-        let Font_Width = GetFontWidth(chfont);
-
-        let ch_asicc =  ch.charCodeAt(0);
-        let Char_Offset = ch_asicc * Font_Height *(Font_Width / 8 +(Font_Width % 8 ? 1 : 0));
-        
-        let ptr = GetFontData(chfont, Char_Offset);
-
-        let Page = 0;
-        let Column = 0;
-        for(Page = 0; Page < Font_Height; Page ++ ) {
-            for(Column = 0; Column < Font_Width; Column ++ ) {
-                if(FONT_BACKGROUND_COLOR == Color_Background) {
-                    if(ptr &(0x80 >>(Column % 8)))
-                        DrawPoint(Xchar + Column, Ychar + Page, Color_Foreground, DOT_PIXEL.DOT_PIXEL_1);
-                } else {
-                    if(ptr &(0x80 >>(Column % 8))) {
-                        DrawPoint(Xchar + Column, Ychar + Page, Color_Foreground, DOT_PIXEL.DOT_PIXEL_1);
-                    } else {
-                        DrawPoint(Xchar + Column, Ychar + Page, Color_Background, DOT_PIXEL.DOT_PIXEL_1);
-                    }
-                }
-                //One pixel is 8 bits
-                if(Column % 8 == 7)
-                    ptr = GetFontData(chfont, Char_Offset + 1);
-            }// Write a line
-            if(Font_Width % 8 != 0)
-                ptr = GetFontData(chfont, Char_Offset + 1);
-        }// Write all
-    }
-  
 }
