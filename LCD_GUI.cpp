@@ -44,6 +44,8 @@ void LCD_GUI::GUI_DrawPoint(int Xpoint, int Ypoint, DOT_PIXEL Dot_Pixel, int Col
 
 void LCD_GUI::GUI_DisChar(int Xchar, int Ychar, int Char_Offset, int Color){
     if(Char_Offset == 97){        
-        GUI_DrawPoint(Xchar, Ychar, DOT_PIXEL_1, Color);
+        GUI_DrawPoint(Xchar, Ychar, DOT_PIXEL_2, Color);
+    }else{
+        GUI_DrawPoint(Xchar, Ychar, DOT_PIXEL_3, 0xF800);
     }
 }
