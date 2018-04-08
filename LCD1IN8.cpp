@@ -36,16 +36,16 @@ namespace LCD1IN8 {
     int GetFontData(CHARFONT chfont, int Offset) {
         return lcd->GUI_GetFontData(chfont, Offset);
     }
-    
-    //%
+ /*   
+    //
     int GetFontHeight(CHARFONT chfont) {
         return lcd->GUI_GetFontHeight(chfont);
     }
     
-    //%
+    //
     int GetFontWidth(CHARFONT chfont) {
         return lcd->GUI_GetFontWidth(chfont);
     }
-
+*/
 }
 

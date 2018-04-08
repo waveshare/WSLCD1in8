@@ -38,8 +38,7 @@ enum DRAW_FILL {
 };
 
 enum CHARFONT{
-    CH_font12 = 0,
-    CH_font16
+    CH_font12 = 0
 };
 
 
@@ -54,8 +53,8 @@ public:
     
     void GUI_DrawPoint(int Xpoint, int Ypoint, DOT_PIXEL Dot_Pixel, int Color);
     int GUI_GetFontData(CHARFONT chfont, int Offset);
-    int GUI_GetFontHeight(CHARFONT chfont);
-    int GUI_GetFontWidth(CHARFONT chfont);
+ //   int GUI_GetFontHeight(CHARFONT chfont);
+ //   int GUI_GetFontWidth(CHARFONT chfont);
    
 };
 

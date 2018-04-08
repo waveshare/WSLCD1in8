@@ -43,15 +43,18 @@ namespace LCD1IN8 {
         return;
     }
     
-    //% shim=LCD1IN8::GetFontHeight
+/*    
+    // shim=LCD1IN8::GetFontHeight
     function GetFontHeight(chfont: CHARFONT): number{
         return;
     }
     
-    //% shim=LCD1IN8::GetFontWidth
+    // shim=LCD1IN8::GetFontWidth
     function GetFontWidth(chfont: CHARFONT): number{
         return;
-    }  
+    }
+*/
+
     //% blockId=LCD_Init
     //% blockGap=8
     //% block="LCD1IN8 Init"
