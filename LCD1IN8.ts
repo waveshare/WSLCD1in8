@@ -73,7 +73,7 @@ namespace LCD1IN8 {
     //% blockId=DrawPoint
     //% blockGap=8
     //% block="Draw Point|x %x|y %y|Color %Color|Point Size %Dot"
-    //% x.min=0 x.max=159 y.min=0 y.max=127
+    //% x.min=0 x.max=160 y.min=0 y.max=128
     //% Color.min=0 Color.max=65535
     //% shim=LCD1IN8::DrawPoint
     //% weight=190
@@ -87,8 +87,8 @@ namespace LCD1IN8 {
     //% blockId=DrawLine
     //% blockGap=8
     //% block="Draw Line|Xstart %Xstart|Ystart %Ystart|Xend %Xend|Yend %Yend|Color %Color|Line width %Line_width|Line Style %Line_Style"
-    //% Xstart.min=0 Xstart.max=159 Ystart.min=0 Ystart.max=127
-    //% Xend.min=0 Xend.max=159 Yend.min=0 Yend.max=127
+    //% Xstart.min=0 Xstart.max=160 Ystart.min=0 Ystart.max=128
+    //% Xend.min=0 Xend.max=160 Yend.min=0 Yend.max=128
     //% Color.min=0 Color.max=65535
     //% weight=180
     export function DrawLine(Xstart: number, Ystart: number, Xend: number, Yend: number, Color: number, Line_width: DOT_PIXEL, Line_Style: LINE_STYLE): void {
@@ -138,8 +138,8 @@ namespace LCD1IN8 {
     //% blockId=DrawRectangle
     //% blockGap=8
     //% block="Draw Rectangle|Xstart2 %Xstart2|Ystart2 %Ystart2|Xend2 %Xend2|Yend2 %Yend2|Color %Color|Filled %Filled |Line width %Dot_Pixel"
-    //% Xstart2.min=0 Xstart2.max=159 Ystart2.min=0 Ystart2.max=127 
-    //% Xend2.min=0 Xend2.max=159 Yend2.min=0 Yend2.max=127
+    //% Xstart2.min=0 Xstart2.max=160 Ystart2.min=0 Ystart2.max=128 
+    //% Xend2.min=0 Xend2.max=160 Yend2.min=0 Yend2.max=128
     //% Color.min=0 Color.max=65535
     //% weight=170
     export function DrawRectangle(Xstart2: number, Ystart2: number, Xend2: number, Yend2: number, Color: number, Filled: DRAW_FILL, Dot_Pixel: DOT_PIXEL): void {
@@ -166,9 +166,9 @@ namespace LCD1IN8 {
     //% blockId=DrawCircle
     //% blockGap=8
     //% block="Draw Circle|X_Center %X_Center |Y_Center %Y_Center |Radius %Radius|Color %Color|Filled %Draw_Fill|Line width %Dot_Pixel "
-    //% X_Center.min=0 X_Center.max=159 
-    //% Y_Center.min=0 Y_Center.max=63 
-    //% Radius.min=0 Radius.max=63 
+    //% X_Center.min=0 X_Center.max=160 
+    //% Y_Center.min=0 Y_Center.max=64 
+    //% Radius.min=0 Radius.max=64 
     //% Color.min=0 Color.max=65535
     //% weight=160
     export function DrawCircle(X_Center: number, Y_Center: number, Radius: number, Color: number, Draw_Fill: DRAW_FILL, Dot_Pixel: DOT_PIXEL): void {
@@ -226,7 +226,7 @@ namespace LCD1IN8 {
     /% blockId=DisChar
     /% blockGap=8
     /% block="show Char|X %Xchar|Y %Ychar|char %ch|font %chfont|Foreground %Color_Foreground|Background %Color_Background"
-    /% Xchar.min=0 Xchar.max=159 Ychar.min=0 Ychar.max=63 
+    /% Xchar.min=0 Xchar.max=160 Ychar.min=0 Ychar.max=64 
     /% Color_Foreground.min=0 Color_Foreground.max=65535
     /% Color_Background.min=0 Color_Background.max=65535
     /% weight=140
