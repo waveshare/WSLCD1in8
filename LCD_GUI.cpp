@@ -1,9 +1,9 @@
 #include "LCD_GUI.h"
 #include "LCD_Driver.h"
-#include "fonts.h"
+//#include "fonts.h"
 
 LCD_DRIVER *lcd1in8;
-sFONT* Font;
+//sFONT* Font;
 
 void LCD_GUI::GUI_Init(void){
     lcd1in8->LCD_Init();
@@ -42,39 +42,8 @@ void LCD_GUI::GUI_DrawPoint(int Xpoint, int Ypoint, DOT_PIXEL Dot_Pixel, int Col
     }
 }
 
-int LCD_GUI::GUI_GetFontData(CHARFONT chfont, int Offset){
-/*    if (chfont == CH_font12) {
-        Font = &Font12;
-    } else {
-        Font = &Font16;
-    }*/
-    return Offset;
-    /*
-    int Fontdata = 0;
-    Fontdata = Font12->table[Offset];
-    return Fontdata;*/
-}
-/*
-int LCD_GUI::GUI_GetFontHeight(CHARFONT chfont){
-    if (chfont == CH_font12) {
-        Font = &Font12;
-    } else {
-        Font = &Font16;
+void LCD_GUI::GUI_DisChar(int Xchar, int Ychar, int Char_Offset, int Color){
+    if(Char_Offset == 97){        
+        GUI_DrawPoint(Xchar, Ychar, DOT_PIXEL_1, Color);
     }
-    
-    int FontHeight = 0;
-    FontHeight = Font->Height;
-    return FontHeight;
 }
-
-int LCD_GUI::GUI_GetFontWidth(CHARFONT chfont){
-    if (chfont == CH_font12) {
-        Font = &Font12;
-    } else {
-        Font = &Font16;
-    }
-    
-    int FontWidth = 0;
-    FontWidth = Font->Width;
-    return FontWidth;
-}*/

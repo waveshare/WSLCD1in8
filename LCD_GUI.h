@@ -52,9 +52,7 @@ public:
     void GUI_SetColor(int Color, int Xpoint, int Ypoint);
     
     void GUI_DrawPoint(int Xpoint, int Ypoint, DOT_PIXEL Dot_Pixel, int Color);
-    int GUI_GetFontData(CHARFONT chfont, int Offset);
- //   int GUI_GetFontHeight(CHARFONT chfont);
- //   int GUI_GetFontWidth(CHARFONT chfont);
+    void GUI_DisChar(int Xchar, int Ychar, int Char_Offset, int Color);
    
 };
 

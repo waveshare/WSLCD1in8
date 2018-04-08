@@ -15,8 +15,6 @@
         "LCD_GUI.h",
         "LCD_Driver.cpp",
         "LCD_Driver.h",
-        "font12.cpp",
-        "fonts.h",
         "shims.d.ts",
         "enums.d.ts"
     ],
