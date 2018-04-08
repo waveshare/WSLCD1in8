@@ -7,7 +7,7 @@ namespace LCD1IN8 {
 	LCD_GUI *lcd;
 	
     //%
-    void Init() {
+    void LCD_Init() {
         lcd->GUI_Init();
         lcd->GUI_Clear();
     }

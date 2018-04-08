@@ -56,9 +56,9 @@ namespace LCD1IN8 {
     //% blockId=LCD_Init
     //% blockGap=8
     //% block="LCD1IN8 Init"
-    //% shim=LCD1IN8::Init
+    //% shim=LCD1IN8::LCD_Init
     //% weight=200
-    export function Init(): void{
+    export function LCD_Init(): void{
         return;
     }
     
