@@ -37,13 +37,13 @@ namespace LCD1IN8 {
     function SetColor(Color: number, x: number, y: number): void{
         return;
     }
-   
-    //% shim=LCD1IN8::GetFontData
+/*   
+    // shim=LCD1IN8::GetFontData
     function GetFontData(chfont: CHARFONT, Offset: number): number{
         return;
     }
     
-/*    
+    
     // shim=LCD1IN8::GetFontHeight
     function GetFontHeight(chfont: CHARFONT): number{
         return;
@@ -239,8 +239,8 @@ namespace LCD1IN8 {
         let ch_asicc =  ch.charCodeAt(0);
         let Char_Offset = ch_asicc * Font_Height *(Font_Width / 8 +(Font_Width % 8 ? 1 : 0));
         
-        let ptr = GetFontData(chfont, Char_Offset);
-        serial.writeNumber(ptr);
+       //let ptr = GetFontData(chfont, Char_Offset);
+        //serial.writeNumber(ptr);
     /*        
         let Page = 0;
         let Column = 0;
