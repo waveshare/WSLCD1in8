@@ -178,16 +178,16 @@ void LCD_DRIVER::LCD_SetWindows(POINT Xstart, POINT Ystart, POINT Xend, POINT Ye
     //set the X coordinates
     LCD_WriteReg(0x2A);
     LCD_WriteData_8Bit(0x00); 
-    LCD_WriteData_8Bit((Xstart & 0xff) + 1); 
+    LCD_WriteData_8Bit((Xstart & 0xff) + 2); 
     LCD_WriteData_8Bit(0x00 ); 
-    LCD_WriteData_8Bit(((Xend - 1) & 0xff) + 1); 
+    LCD_WriteData_8Bit(((Xend - 1) & 0xff) + 2); 
 
     //set the Y coordinates
     LCD_WriteReg(0x2B);
     LCD_WriteData_8Bit(0x00);
-    LCD_WriteData_8Bit((Ystart & 0xff) + 2);
+    LCD_WriteData_8Bit((Ystart & 0xff) + 3);
     LCD_WriteData_8Bit(0x00 );
-    LCD_WriteData_8Bit(((Yend - 1) & 0xff)+ 2);
+    LCD_WriteData_8Bit(((Yend - 1) & 0xff)+ 3);
 
     LCD_WriteReg(0x2C);
 }
