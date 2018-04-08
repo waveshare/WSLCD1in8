@@ -218,7 +218,7 @@ namespace LCD1IN8 {
     //% Xchar.min=0 Xchar.max=160 Ychar.min=0 Ychar.max=64 
     //% Color.min=0 Color.max=65535
     //% weight=140
-    export function DisString(Xchar: number, Ychar: number, ch: string, Color: number){
+    export function DisString(Xchar: number, Ychar: number, ch: string, Color: number): void{
         return;
         let Font_Height = 12;//GetFontHeight(chfont);
         let Font_Width = 7;//GetFontWidth(chfont);
