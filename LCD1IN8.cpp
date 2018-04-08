@@ -31,21 +31,21 @@ namespace LCD1IN8 {
     void DrawPoint(int x, int y, int Color, DOT_PIXEL Dot) {
         lcd->GUI_DrawPoint(x, y, Dot, Color);
     }
-    
-    //%
+/*    
+    /%
     int GetFontData(CHARFONT chfont, int Offset) {
         return lcd->GUI_GetFontData(chfont, Offset);
     }
     
-    //%
+    /%
     int GetFontHeight(CHARFONT chfont) {
         return lcd->GUI_GetFontHeight(chfont);
     }
     
-    //%
+    /%
     int GetFontWidth(CHARFONT chfont) {
         return lcd->GUI_GetFontWidth(chfont);
     }
-    
+*/   
 }
 

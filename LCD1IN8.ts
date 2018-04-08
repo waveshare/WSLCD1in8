@@ -37,22 +37,22 @@ namespace LCD1IN8 {
     function SetColor(Color: number, x: number, y: number): void{
         return;
     }
-    
-    //% shim=LCD1IN8::GetFontData
+/*    
+    % shim=LCD1IN8::GetFontData
     function GetFontData(chfont: CHARFONT, Offset: number): number{
         return;
     }
     
-    //% shim=LCD1IN8::GetFontHeight
+    % shim=LCD1IN8::GetFontHeight
     function GetFontHeight(chfont: CHARFONT): number{
         return;
     }
     
-    //% shim=LCD1IN8::GetFontWidth
+    % shim=LCD1IN8::GetFontWidth
     function GetFontWidth(chfont: CHARFONT): number{
         return;
     }
-    
+ */   
     //% blockId=LCD_Init
     //% blockGap=8
     //% block="LCD1IN8 Init"
@@ -222,14 +222,14 @@ namespace LCD1IN8 {
         }
     }
 
-    
-    //% blockId=DisChar
-    //% blockGap=8
-    //% block="show Char|X %Xchar|Y %Ychar|char %ch|font %chfont|Foreground %Color_Foreground|Background %Color_Background"
-    //% Xchar.min=0 Xchar.max=159 Ychar.min=0 Ychar.max=63 
-    //% Color_Foreground.min=0 Color_Foreground.max=65535
-    //% Color_Background.min=0 Color_Background.max=65535
-    //% weight=140
+/*    
+    /% blockId=DisChar
+    /% blockGap=8
+    /% block="show Char|X %Xchar|Y %Ychar|char %ch|font %chfont|Foreground %Color_Foreground|Background %Color_Background"
+    /% Xchar.min=0 Xchar.max=159 Ychar.min=0 Ychar.max=63 
+    /% Color_Foreground.min=0 Color_Foreground.max=65535
+    /% Color_Background.min=0 Color_Background.max=65535
+    /% weight=140
     export function DisChar(Xchar: number, Ychar: number, ch: string, chfont: CHARFONT, Color_Foreground: number, Color_Background: number){
         let Font_Height = GetFontHeight(chfont);
         let Font_Width = GetFontWidth(chfont);
@@ -260,5 +260,5 @@ namespace LCD1IN8 {
             if(Font_Width % 8 != 0)
                 ptr = GetFontData(chfont, Char_Offset + 1);
         }// Write all
-    }
+    }*/
 }
