@@ -40,9 +40,8 @@
 
 
     declare const enum CHARFONT {
-    CH_font8 = 0,
-    CH_font12 = 1,
-    CH_font16 = 2,
+    CH_font12 = 0,
+    CH_font16 = 1,
     }
 
 // Auto-generated. Do not edit. Really.

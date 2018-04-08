@@ -1,9 +1,9 @@
 #include "LCD_GUI.h"
 #include "LCD_Driver.h"
-//#include "fonts.h"
+#include "fonts.h"
 
 LCD_DRIVER *lcd1in8;
-//sFONT* Font;
+sFONT* Font;
 
 void LCD_GUI::GUI_Init(void){
     lcd1in8->LCD_Init();
@@ -41,11 +41,9 @@ void LCD_GUI::GUI_DrawPoint(int Xpoint, int Ypoint, DOT_PIXEL Dot_Pixel, int Col
         }
     }
 }
-/*
+
 int LCD_GUI::GUI_GetFontData(CHARFONT chfont, int Offset){
-    if (chfont == CH_font8){
-        Font = &Font8;
-    } else if (chfont == CH_font12) {
+    if (chfont == CH_font12) {
         Font = &Font12;
     } else {
         Font = &Font16;
@@ -57,9 +55,7 @@ int LCD_GUI::GUI_GetFontData(CHARFONT chfont, int Offset){
 }
 
 int LCD_GUI::GUI_GetFontHeight(CHARFONT chfont){
-    if (chfont == CH_font8){
-        Font = &Font8;
-    } else if (chfont == CH_font12) {
+    if (chfont == CH_font12) {
         Font = &Font12;
     } else {
         Font = &Font16;
@@ -71,9 +67,7 @@ int LCD_GUI::GUI_GetFontHeight(CHARFONT chfont){
 }
 
 int LCD_GUI::GUI_GetFontWidth(CHARFONT chfont){
-    if (chfont == CH_font8){
-        Font = &Font8;
-    } else if (chfont == CH_font12) {
+    if (chfont == CH_font12) {
         Font = &Font12;
     } else {
         Font = &Font16;
@@ -82,4 +76,4 @@ int LCD_GUI::GUI_GetFontWidth(CHARFONT chfont){
     int FontWidth = 0;
     FontWidth = Font->Width;
     return FontWidth;
-}*/
+}
