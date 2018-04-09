@@ -207,14 +207,14 @@ namespace LCD1IN8 {
         }
     }
     
-    //% blockId=DistChar
+    //% blockId=DisChar
     //% blockGap=8
     //% block="Show String|X %Xchar|Y %Ychar|Char_Offset %Char_Offset|Color %Color"
     //% Xchar.min=1 Xchar.max=160 Ychar.min=1 Ychar.max=128 
     //% Color.min=0 Color.max=65535
     //% weight=150
-    //% shim=LCD1IN8::DistChar
-    function DistChar(Xchar: number, Ychar: number, Char_Offset: number, Color: number): void{
+    //% shim=LCD1IN8::DisChar
+    export function DisChar(Xchar: number, Ychar: number, Char_Offset: number, Color: number): void{
         return;
     }
 
@@ -225,13 +225,31 @@ namespace LCD1IN8 {
     //% Color.min=0 Color.max=65535
     //% weight=140
     export function DisString(Xchar: number, Ychar: number, ch: string, Color: number): void{
-        return;
+		let Xpoint = Xchar;
+		let Ypoint = Ychar;
         let Font_Height = 12;
         let Font_Width = 7;
+		let ch_len = ch.length;
+		let i = 0;
+		for(i = 0; i < ch_len; i++){
+			let ch_asicc =  ch.charCodeAt(i) - 32;//NULL = 32
+			let Char_Offset = ch_asicc * Font_Height *(Font_Width / 8 +(Font_Width % 8 ? 1 : 0));
+			
+			if((Xpoint + Font_Width) > 160) {
+				Xpoint = Xchar;
+				Ypoint += Font_Height;
+			}
 
-        let ch_asicc =  ch.charCodeAt(0);
-        let Char_Offset = ch_asicc * Font_Height *(Font_Width / 8 +(Font_Width % 8 ? 1 : 0));
-        
-        DistChar(Xchar, Ychar, Char_Offset, Color);
+			// If the Y direction is full, reposition to(Xstart, Ystart)
+			if((Ypoint  + Font_Height) > 128) {
+				Xpoint = Xchar;
+				Ypoint = Ychar;
+			}
+			DisChar(Xpoint, Ypoint, Char_Offset, Color);
+			
+			        //The next word of the abscissa increases the font of the broadband
+			Xpoint += Font_Width;
+		} 
+       
     }
 }

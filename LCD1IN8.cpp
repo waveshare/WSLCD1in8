@@ -33,7 +33,7 @@ namespace LCD1IN8 {
     }
     
     //%
-    void DistChar(int Xchar, int Ychar, int Char_Offset, int Color){
+    void DisChar(int Xchar, int Ychar, int Char_Offset, int Color){
         lcd->GUI_DisChar(Xchar, Ychar, Char_Offset, Color);
     }
 }

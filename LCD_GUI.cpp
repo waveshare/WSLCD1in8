@@ -1,9 +1,7 @@
 #include "LCD_GUI.h"
 #include "LCD_Driver.h"
-//#include "fonts.h"
 
 LCD_DRIVER *lcd1in8;
-//sFONT* Font;
 
 void LCD_GUI::GUI_Init(void){
     lcd1in8->LCD_Init();
@@ -43,9 +41,19 @@ void LCD_GUI::GUI_DrawPoint(int Xpoint, int Ypoint, DOT_PIXEL Dot_Pixel, int Col
 }
 
 void LCD_GUI::GUI_DisChar(int Xchar, int Ychar, int Char_Offset, int Color){
-    if(Char_Offset == 97){        
-        GUI_DrawPoint(Xchar, Ychar, DOT_PIXEL_2, Color);
-    }else{
-        GUI_DrawPoint(Xchar, Ychar, DOT_PIXEL_3, 0xF800);
-    }
+	int Page = 0, Column = 0;
+	const unsigned char *ptr = &Font12_Table[Char_Offset];
+
+    for(Page = 0; Page < 12; Page ++ ) {
+        for(Column = 0; Column < 7; Column ++ ) {
+            if(*ptr & (0x80 >> (Column % 8)))
+                lcd1in8->LCD_SetPointlColor(Xchar + Column, Ychar + Page, Color);
+
+            //One pixel is 8 bits
+            if(Column % 8 == 7)
+                ptr++;
+        }// Write a line
+        if(7 % 8 != 0)
+            ptr++;
+    }// Write all
 }
