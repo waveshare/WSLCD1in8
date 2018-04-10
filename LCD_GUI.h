@@ -1385,7 +1385,6 @@ public:
     
     void GUI_DrawPoint(int Xpoint, int Ypoint, DOT_PIXEL Dot_Pixel, int Color);
     void GUI_DisChar(int Xchar, int Ychar, int Char_Offset, int Color);
-   
 };
 
 #endif

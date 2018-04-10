@@ -1,4 +1,6 @@
 // Auto-generated. Do not edit.
+declare namespace LCD1IN8 {
+}
 
 
     declare const enum LCD_COLOR {

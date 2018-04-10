@@ -3,6 +3,7 @@
 
 using namespace pxt;
 
+//% weight=20 color=#436EEE icon="\uf108"
 namespace LCD1IN8 {
 	LCD_GUI *lcd;
 	
@@ -31,7 +32,7 @@ namespace LCD1IN8 {
     void DrawPoint(int x, int y, int Color, DOT_PIXEL Dot) {
         lcd->GUI_DrawPoint(x, y, Dot, Color);
     }
-    
+
     //%
     void DisChar(int Xchar, int Ychar, int Char_Offset, int Color){
         lcd->GUI_DisChar(Xchar, Ychar, Char_Offset, Color);
