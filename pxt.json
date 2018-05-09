@@ -9,12 +9,12 @@
     },
     "files": [
         "README.md",
-        "LCD1IN8.cpp",
-        "LCD1IN8.ts",
-        "LCD_GUI.cpp",
-        "LCD_GUI.h",
+		"LCD1in8.ts",
+        "LCD1in8.cpp",
         "LCD_Driver.cpp",
         "LCD_Driver.h",
+		"SPI_RAM.cpp",
+		"SPI_RAM.h",
         "shims.d.ts",
         "enums.d.ts"
     ],

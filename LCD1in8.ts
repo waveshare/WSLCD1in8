@@ -1,11 +1,11 @@
 /*****************************************************************************
-* | File      	:   WS1in8LCD
+* | File      	:   1in8LCD.ts
 * | Author      :   Waveshare team
-* | Function    :   Contorl lcd Show
+* | Function    :   Contorl 1.8inch lcd Show
 * | Info        :
 *----------------
 * | This version:   V1.0
-* | Date        :   2018-02-22
+* | Date        :   2018-05-02
 * | Info        :   Basic version
 *
 ******************************************************************************/
@@ -22,21 +22,6 @@ namespace LCD1IN8 {
         Point1 = Point2;
         Point2 = Temp;
     }
-        
-    //% shim=LCD1IN8::SetWindows
-    function SetWindows(Xstart: number, Ystart: number, Xend: number, Yend: number): void{
-        return;
-    }
-    
-    //% shim=LCD1IN8::SetCursor
-    function SetCursor(x: number, y: number): void{
-        return;
-    }
-    
-    //% shim=LCD1IN8::SetColor
-    function SetColor(Color: number, x: number, y: number): void{
-        return;
-    }
 
     //% blockId=LCD_Init
     //% blockGap=8
@@ -46,15 +31,43 @@ namespace LCD1IN8 {
     export function LCD_Init(): void{
         return;
     }
+	
+	//% blockId=LCD_Clear
+    //% blockGap=8
+    //% block="Clear Buffer"
+    //% shim=LCD1IN8::LCD_Clear
+    //% weight=199
+    export function LCD_Clear(): void{
+       return;
+    }
+	
+	//% blockId=LCD_Display
+    //% blockGap=8
+    //% block="Send display data"
+    //% shim=LCD1IN8::LCD_Display
+    //% weight=198
+    export function LCD_Display(): void{
+        return;
+    }
     
     //% blockId=Get_Color
     //% blockGap=8
     //% block="%Color"
-    //% weight=199
+    //% weight=197
     export function Get_Color(Color: LCD_COLOR): number{
         return Color;
     }
     
+	//% blockId=LCD_SetBL
+    //% blockGap=8
+    //% block="Set back light level %Lev"
+	//% Lev.min=0 Lev.max=330
+    //% shim=LCD1IN8::LCD_SetBL
+    //% weight=196
+    export function LCD_SetBL(Lev: number): void{
+        return;
+    }
+	
     //% blockId=DrawPoint
     //% blockGap=8
     //% block="Draw Point|x %x|y %y|Color %Color|Point Size %Dot"
@@ -135,8 +148,9 @@ namespace LCD1IN8 {
 
         let Ypoint = 0;
         if (Filled) {
-            SetWindows(Xstart2, Ystart2, Xend2, Yend2);
-            SetColor(Color, Yend2 - Ystart2, Xend2 - Xstart2);
+			for(Ypoint = Ystart2; Ypoint < Yend2; Ypoint++) {
+				DrawLine(Xstart2, Ypoint, Xend2, Ypoint, Color, Dot_Pixel, LINE_STYLE.LINE_SOLID);
+			}
         } else {
             DrawLine(Xstart2, Ystart2, Xend2, Ystart2, Color, Dot_Pixel, LINE_STYLE.LINE_SOLID);
             DrawLine(Xstart2, Ystart2, Xstart2, Yend2, Color, Dot_Pixel, LINE_STYLE.LINE_SOLID);
@@ -151,6 +165,8 @@ namespace LCD1IN8 {
     //% blockId=DrawCircle
     //% blockGap=8
     //% block="Draw Circle|X_Center %X_Center|Y_Center %Y_Center|Radius %Radius|Color %Color|Filled %Draw_Fill|Line width %Dot_Pixel"
+	//% X_Center.min=1 X_Center.max=160 Y_Center.min=1 Y_Center.max=128
+	//% Radius.min=0 Radius.max=160
     //% Color.min=0 Color.max=65535
     //% weight=160
     export function DrawCircle(X_Center: number, Y_Center: number, Radius: number, Color: number, Draw_Fill: DRAW_FILL, Dot_Pixel: DOT_PIXEL): void {
@@ -204,11 +220,8 @@ namespace LCD1IN8 {
         }
     }
     
-	
-	
-	
-    //% shim=LCD1IN8::DisChar
-    function DisChar(Xchar: number, Ychar: number, Char_Offset: number, Color: number): void{
+    //% shim=LCD1IN8::DisChar_1207
+    function DisChar_1207(Xchar: number, Ychar: number, Char_Offset: number, Color: number): void{
         return;
     }
 
@@ -239,7 +252,7 @@ namespace LCD1IN8 {
 				Xpoint = Xchar;
 				Ypoint = Ychar;
 			}
-			DisChar(Xpoint, Ypoint, Char_Offset, Color);
+			DisChar_1207(Xpoint, Ypoint, Char_Offset, Color);
 			
 			//The next word of the abscissa increases the font of the broadband
 			Xpoint += Font_Width;

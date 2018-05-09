@@ -1,0 +1,14 @@
+{
+    "name": "Untitled",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "LCD" : "file:../LCD1in8"
+    },
+    "description": "",
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ]
+}

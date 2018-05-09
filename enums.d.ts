@@ -3,6 +3,20 @@ declare namespace LCD1IN8 {
 }
 
 
+    /*****************************************************************************
+     * | File        :   LCD1in8_Driver.h
+     * | Author      :   Waveshare team
+     * | Function    :   ILI9486 Drive function
+     * | Info        :
+     *   Image scanning
+     *      Please use progressive scanning to generate images or fonts
+     *----------------
+     * | This version:   V1.0
+     * | Date        :   2018-01-11
+     * | Info        :   Basic version
+     *
+     ******************************************************************************/
+
     declare const enum LCD_COLOR {
     WHITE = 0xFFFF,
     BLACK = 0x0000,
@@ -38,11 +52,6 @@ declare namespace LCD1IN8 {
     declare const enum DRAW_FILL {
     DRAW_EMPTY = 0,
     DRAW_FULL = 1,
-    }
-
-
-    declare const enum CHARFONT {
-    CH_font12 = 0,
     }
 
 // Auto-generated. Do not edit. Really.
