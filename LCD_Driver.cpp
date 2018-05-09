@@ -15,7 +15,6 @@
 #include "mbed.h"
 #include "LCD_Driver.h"
 #include "SPI_RAM.h"
-//#include "Fonts.h"
 
 //spi
 SPI lcd_spi(MOSI, MISO, SCK);
