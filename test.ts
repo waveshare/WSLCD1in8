@@ -12,6 +12,7 @@
 // tests go here; this will not be compiled when this package is used as a library
 LCD1IN8.LCD_Init()
 LCD1IN8.LCD_SetBL(180)
+LCD1IN8.LCD_Filling(LCD_COLOR.RED)
 LCD1IN8.LCD_Clear()
 LCD1IN8.DrawLine(
 1,

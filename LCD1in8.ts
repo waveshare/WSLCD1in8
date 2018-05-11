@@ -34,10 +34,19 @@ namespace LCD1IN8 {
 	
 	//% blockId=LCD_Clear
     //% blockGap=8
-    //% block="Clear Buffer"
+    //% block="Clear Clear screen and cache"
     //% shim=LCD1IN8::LCD_Clear
     //% weight=199
     export function LCD_Clear(): void{
+       return;
+    }
+    
+    //% blockId=LCD_Filling
+    //% blockGap=8
+    //% block="Clear Buffer"
+    //% shim=LCD1IN8::LCD_Filling
+    //% weight=199
+    export function LCD_Filling(Color: number): void{
        return;
     }
 	

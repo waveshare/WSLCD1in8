@@ -28,6 +28,11 @@ namespace LCD1IN8 {
         LCD->LCD_Clear(WHITE);
 		LCD->LCD_ClearBuf();
     }
+    
+    //%
+    void LCD_Filling(int Color) {
+        LCD->LCD_Clear(Color);
+    }
 	
 	//%
     void LCD_Display() {
