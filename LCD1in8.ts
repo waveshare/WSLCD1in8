@@ -36,7 +36,7 @@ namespace LCD1IN8 {
     //% blockGap=8
     //% block="Clear Clear screen and cache"
     //% shim=LCD1IN8::LCD_Clear
-    //% weight=199
+    //% weight=195
     export function LCD_Clear(): void{
        return;
     }
@@ -45,7 +45,7 @@ namespace LCD1IN8 {
     //% blockGap=8
     //% block="Filling Color %Color"
     //% shim=LCD1IN8::LCD_Filling
-    //% weight=199
+    //% weight=198
     export function LCD_Filling(Color: number): void{
        return;
     }
@@ -54,7 +54,7 @@ namespace LCD1IN8 {
     //% blockGap=8
     //% block="Send display data"
     //% shim=LCD1IN8::LCD_Display
-    //% weight=198
+    //% weight=190
     export function LCD_Display(): void{
         return;
     }
@@ -62,7 +62,7 @@ namespace LCD1IN8 {
     //% blockId=Get_Color
     //% blockGap=8
     //% block="%Color"
-    //% weight=197
+    //% weight=185
     export function Get_Color(Color: LCD_COLOR): number{
         return Color;
     }
@@ -72,7 +72,7 @@ namespace LCD1IN8 {
     //% block="Set back light level %Lev"
 	//% Lev.min=0 Lev.max=330
     //% shim=LCD1IN8::LCD_SetBL
-    //% weight=196
+    //% weight=180
     export function LCD_SetBL(Lev: number): void{
         return;
     }
@@ -83,7 +83,7 @@ namespace LCD1IN8 {
     //% x.min=1 x.max=160 y.min=1 y.max=128
     //% Color.min=0 Color.max=65535
     //% shim=LCD1IN8::DrawPoint
-    //% weight=190
+    //% weight=150
     export function DrawPoint(x: number, y: number, Color: number, Dot: DOT_PIXEL): void{
         return;
     }
@@ -97,7 +97,7 @@ namespace LCD1IN8 {
 	//% Xstart.min=1 Xstart.max=160 Ystart.min=1 Ystart.max=128
 	//% Xend.min=1 Xend.max=160 Yend.min=1 Yend.max=128
 	//% Color.min=0 Color.max=65535
-	//% weight=180
+	//% weight=140
     export function DrawLine(Xstart: number, Ystart: number, Xend: number, Yend: number, Color: number, Line_width: DOT_PIXEL, Line_Style: LINE_STYLE): void {
         if (Xstart > Xend)
             Swop_AB(Xstart, Xend);
@@ -148,7 +148,7 @@ namespace LCD1IN8 {
     //% Xstart2.min=1 Xstart2.max=160 Ystart2.min=1 Ystart2.max=128 
     //% Xend2.min=1 Xend2.max=160 Yend2.min=1 Yend2.max=128
     //% Color.min=0 Color.max=65535
-    //% weight=170
+    //% weight=130
     export function DrawRectangle(Xstart2: number, Ystart2: number, Xend2: number, Yend2: number, Color: number, Filled: DRAW_FILL, Dot_Pixel: DOT_PIXEL): void {
         if (Xstart2 > Xend2)
             Swop_AB(Xstart2, Xend2);
@@ -177,7 +177,7 @@ namespace LCD1IN8 {
 	//% X_Center.min=1 X_Center.max=160 Y_Center.min=1 Y_Center.max=128
 	//% Radius.min=0 Radius.max=160
     //% Color.min=0 Color.max=65535
-    //% weight=160
+    //% weight=120
     export function DrawCircle(X_Center: number, Y_Center: number, Radius: number, Color: number, Draw_Fill: DRAW_FILL, Dot_Pixel: DOT_PIXEL): void {
         //Draw a circle from(0, R) as a starting point
         let XCurrent = 0;
@@ -239,7 +239,7 @@ namespace LCD1IN8 {
     //% block="Show String|X %Xchar|Y %Ychar|char %ch|Color %Color"
     //% Xchar.min=1 Xchar.max=160 Ychar.min=1 Ychar.max=128 
     //% Color.min=0 Color.max=65535
-    //% weight=140
+    //% weight=100
     export function DisString(Xchar: number, Ychar: number, ch: string, Color: number): void{
 		let Xpoint = Xchar;
 		let Ypoint = Ychar;
