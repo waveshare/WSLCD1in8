@@ -38,6 +38,11 @@ namespace LCD1IN8 {
     void LCD_Display() {
         LCD->LCD_Display();
     }
+    
+    //%
+    void LCD_DisplayWindows(int Xstart, int Ystart, int Xend, int Yend) {
+        LCD->LCD_DisplayWindows(Xstart, Ystart, Xend, Yend);
+    }
 	
 	//%
     void LCD_SetBL(int Lev) {

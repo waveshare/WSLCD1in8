@@ -269,7 +269,7 @@ void LCD_Driver::LCD_Init()
 
 void LCD_Driver::LCD_SetBL(int Lev)
 {
-	LCD_BL = Lev / 100;
+    LCD_BL = Lev / 100;
 }
 
 /********************************************************************************
@@ -304,7 +304,7 @@ void LCD_Driver::LCD_SetPoint(UWORD Xpoint, UWORD Ypoint, UWORD Color)
 void LCD_Driver::LCD_Display()
 {
     UWORD x, y;
-    UBYTE RBUF[160 * 2 * 2];
+    UBYTE RBUF[160 * 2 * 2];//read tow lines
     memset(RBUF, 0xff, sizeof(RBUF));
 
     spiram->SPIRAM_Set_Mode(STREAM_MODE);
@@ -315,6 +315,27 @@ void LCD_Driver::LCD_Display()
         LCD_DC_1;
         LCD_CS_0;
         for (x = 0; x < 160 * 2; x++ ) {
+            LCD_SPI_Write_Byte((uint8_t)RBUF[x * 2]);
+            LCD_SPI_Write_Byte((uint8_t)RBUF[x * 2 + 1]);
+        }
+        LCD_CS_1;
+    }
+}
+
+void LCD_Driver::LCD_DisplayWindows(UWORD Xstart, UWORD Ystart, UWORD Xend, UWORD Yend)
+{
+    UWORD x, y;
+    UBYTE RBUF[(Xend - Xstart + 1) * 2];
+    memset(RBUF, 0xff, sizeof(RBUF));
+
+    spiram->SPIRAM_Set_Mode(STREAM_MODE);
+    LCD_SetWindows(Xstart, Ystart, Xend, Yend);
+    for (y = Ystart; y < Yend; y++) {//line
+        spiram->SPIRAM_RD_Stream((y * 160 + Xstart) * 2, RBUF, sizeof(RBUF));
+
+        LCD_DC_1;
+        LCD_CS_0;
+        for (x = 0; x < Xend - Xstart; x++) {
             LCD_SPI_Write_Byte((uint8_t)RBUF[x * 2]);
             LCD_SPI_Write_Byte((uint8_t)RBUF[x * 2 + 1]);
         }

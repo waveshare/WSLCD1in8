@@ -80,7 +80,8 @@ public:
     void LCD_ClearBuf(void);
 
     void LCD_Display(void);
-	
+    void LCD_DisplayWindows(UWORD Xstart, UWORD Ystart, UWORD Xend, UWORD Yend);
+    
 	void LCD_DrawPoint(int Xpoint, int Ypoint, DOT_PIXEL Dot_Pixel, int Color);
 	void LCD_DisChar_1207(int Xchar, int Ychar, int Char_Offset, int Color);
 };

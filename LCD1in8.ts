@@ -59,6 +59,17 @@ namespace LCD1IN8 {
         return;
     }
     
+    //% blockId=LCD_DisplayWindows
+    //% blockGap=8
+    //% block="Send display data"
+    //% shim=LCD1IN8::LCD_DisplayWindows
+    //% Xstart.min=1 Xstart.max=160 Ystart.min=1 Ystart.max=128
+    //% Xend.min=1 Xend.max=160 Yend.min=1 Yend.max=128
+    //% weight=189
+    export function LCD_DisplayWindows(Xstart: number, Ystart: number, Xend: number, Yend: number): void{
+        return;
+    }
+    
     //% blockId=Get_Color
     //% blockGap=8
     //% block="%Color"

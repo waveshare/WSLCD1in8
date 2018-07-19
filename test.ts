@@ -89,4 +89,22 @@ LCD1IN8.Get_Color(LCD_COLOR.RED)
 )
 LCD1IN8.LCD_Display()
 
+LCD1IN8.LCD_Clear()
+LCD1IN8.DrawRectangle(
+10,
+30,
+80,
+60,
+LCD1IN8.Get_Color(LCD_COLOR.BLUE),
+DRAW_FILL.DRAW_FULL,
+DOT_PIXEL.DOT_PIXEL_1
+)
+LCD1IN8.DisString(
+90,
+40,
+"Test",
+LCD1IN8.Get_Color(LCD_COLOR.BLUE)
+)
+LCD1IN8.LCD_DisplayWindows(10,30,160,60)
+
 
