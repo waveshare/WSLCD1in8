@@ -61,7 +61,7 @@ namespace LCD1IN8 {
     
     //% blockId=LCD_DisplayWindows
     //% blockGap=8
-    //% block="Send display windows data"
+    //% block="Send display windows data|Xstart %Xstart|Ystart %Ystart|Xend %Xend|Yend %Yend"
     //% shim=LCD1IN8::LCD_DisplayWindows
     //% Xstart.min=1 Xstart.max=160 Ystart.min=1 Ystart.max=128
     //% Xend.min=1 Xend.max=160 Yend.min=1 Yend.max=128
@@ -99,9 +99,6 @@ namespace LCD1IN8 {
         return;
     }
 
-    /*
-    * Draw a line of arbitrary slope
-    */
 	//% blockId=DrawLine
 	//% blockGap=8
 	//% block="Draw Line|Xstart %Xstart|Ystart %Ystart|Xend %Xend|Yend %Yend|Color %Color|Line width %Line_width|Line Style %Line_Style"
@@ -150,9 +147,7 @@ namespace LCD1IN8 {
         }
     }
     
-    /*
-    * Draw a rectangle
-    */
+
     //% blockId=DrawRectangle
     //% blockGap=8
     //% block="Draw Rectangle|Xstart2 %Xstart2|Ystart2 %Ystart2|Xend2 %Xend2|Yend2 %Yend2|Color %Color|Filled %Filled |Line width %Dot_Pixel"
@@ -179,9 +174,6 @@ namespace LCD1IN8 {
         }
     }
 
-    /*
-    * Use the 8-point method to draw a circle of the
-    */
     //% blockId=DrawCircle
     //% blockGap=8
     //% block="Draw Circle|X_Center %X_Center|Y_Center %Y_Center|Radius %Radius|Color %Color|Filled %Draw_Fill|Line width %Dot_Pixel"
