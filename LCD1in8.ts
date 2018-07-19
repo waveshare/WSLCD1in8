@@ -61,7 +61,7 @@ namespace LCD1IN8 {
     
     //% blockId=LCD_DisplayWindows
     //% blockGap=8
-    //% block="Send display data"
+    //% block="Send display windows data"
     //% shim=LCD1IN8::LCD_DisplayWindows
     //% Xstart.min=1 Xstart.max=160 Ystart.min=1 Ystart.max=128
     //% Xend.min=1 Xend.max=160 Yend.min=1 Yend.max=128
