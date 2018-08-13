@@ -52,7 +52,7 @@ namespace LCD1IN8 {
 	
 	//% blockId=LCD_Display
     //% blockGap=8
-    //% block="Send display data"
+    //% block="Show Full Screen"
     //% shim=LCD1IN8::LCD_Display
     //% weight=190
     export function LCD_Display(): void{
@@ -61,7 +61,7 @@ namespace LCD1IN8 {
     
     //% blockId=LCD_DisplayWindows
     //% blockGap=8
-    //% block="Send display windows data|Xstart %Xstart|Ystart %Ystart|Xend %Xend|Yend %Yend"
+    //% block="Show Windows|Xstart %Xstart|Ystart %Ystart|Xend %Xend|Yend %Yend"
     //% shim=LCD1IN8::LCD_DisplayWindows
     //% Xstart.min=1 Xstart.max=160 Ystart.min=1 Ystart.max=128
     //% Xend.min=1 Xend.max=160 Yend.min=1 Yend.max=128
@@ -269,5 +269,17 @@ namespace LCD1IN8 {
 			//The next word of the abscissa increases the font of the broadband
 			Xpoint += Font_Width;
 		} 
+    }
+    
+    //% blockId=DisNumber
+    //% blockGap=8
+    //% block="Show number|X %Xnum|Y %Ynum|number %num|Color %Color"
+    //% Xnum.min=1 Xnum.max=160 Ynum.min=1 Ynum.max=128 
+    //% Color.min=0 Color.max=65535
+    //% weight=100
+    export function DisNumber(Xnum: number, Ynum: number, num: number, Color: number): void{
+		let Xpoint = Xnum;
+		let Ypoint = Ynum;
+        DisString(Xnum, Ynum, num + "", Color);
     }
 }
