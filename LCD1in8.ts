@@ -76,14 +76,14 @@ namespace LCD1IN8{
         return;
     }
 
-    //% blockId=DrawPoint
+   //% blockId=DrawPoint
     //% blockGap=8
     //% block="Draw Point|x %x|y %y|Color %Color|Point Size %Dot"
     //% x.min=1 x.max=160 y.min=1 y.max=128
     //% Color.min=0 Color.max=65535
     //% shim=LCD1IN8::DrawPoint
     //% weight=150
-    export function DrawPoint(x: number, y: number, Color: number, Dot: number): void {
+    export function DrawPoint(x: number, y: number, Color: number, Dot: DOT_PIXEL): void {
         return;
     }
 
@@ -94,7 +94,7 @@ namespace LCD1IN8{
     //% Xend.min=1 Xend.max=160 Yend.min=1 Yend.max=128
     //% Color.min=0 Color.max=65535
     //% weight=140
-    export function DrawLine(Xstart: number, Ystart: number, Xend: number, Yend: number, Color: number, Line_width: number, Line_Style: LINE_STYLE): void {
+    export function DrawLine(Xstart: number, Ystart: number, Xend: number, Yend: number, Color: number, Line_width: DOT_PIXEL, Line_Style: LINE_STYLE): void {
         if (Xstart > Xend)
             Swop_AB(Xstart, Xend);
         if (Ystart > Yend)
@@ -138,12 +138,12 @@ namespace LCD1IN8{
 
     //% blockId=DrawRectangle
     //% blockGap=8
-    //% block="Draw Rectangle|Xstart2 %Xstart2|Ystart2 %Ystart2|Xend2 %Xend2|Yend2 %Yend2|Color %Color|Filled %Filled |Line width %number"
+    //% block="Draw Rectangle|Xstart2 %Xstart2|Ystart2 %Ystart2|Xend2 %Xend2|Yend2 %Yend2|Color %Color|Filled %Filled |Line width %Dot_Pixel"
     //% Xstart2.min=1 Xstart2.max=160 Ystart2.min=1 Ystart2.max=128
     //% Xend2.min=1 Xend2.max=160 Yend2.min=1 Yend2.max=128
     //% Color.min=0 Color.max=65535
     //% weight=130
-    export function DrawRectangle(Xstart2: number, Ystart2: number, Xend2: number, Yend2: number, Color: number, Filled: DRAW_FILL, number: number): void {
+    export function DrawRectangle(Xstart2: number, Ystart2: number, Xend2: number, Yend2: number, Color: number, Filled: DRAW_FILL, Dot_Pixel: DOT_PIXEL): void {
         if (Xstart2 > Xend2)
             Swop_AB(Xstart2, Xend2);
         if (Ystart2 > Yend2)
@@ -152,24 +152,24 @@ namespace LCD1IN8{
         let Ypoint = 0;
         if (Filled) {
             for(Ypoint = Ystart2; Ypoint < Yend2; Ypoint++) {
-                DrawLine(Xstart2, Ypoint, Xend2, Ypoint, Color, number, LINE_STYLE.LINE_SOLID);
+                DrawLine(Xstart2, Ypoint, Xend2, Ypoint, Color, Dot_Pixel, LINE_STYLE.LINE_SOLID);
             }
         } else {
-            DrawLine(Xstart2, Ystart2, Xend2, Ystart2, Color, number, LINE_STYLE.LINE_SOLID);
-            DrawLine(Xstart2, Ystart2, Xstart2, Yend2, Color, number, LINE_STYLE.LINE_SOLID);
-            DrawLine(Xend2, Yend2, Xend2, Ystart2, Color, number, LINE_STYLE.LINE_SOLID);
-            DrawLine(Xend2, Yend2, Xstart2, Yend2, Color, number, LINE_STYLE.LINE_SOLID);
+            DrawLine(Xstart2, Ystart2, Xend2, Ystart2, Color, Dot_Pixel, LINE_STYLE.LINE_SOLID);
+            DrawLine(Xstart2, Ystart2, Xstart2, Yend2, Color, Dot_Pixel, LINE_STYLE.LINE_SOLID);
+            DrawLine(Xend2, Yend2, Xend2, Ystart2, Color, Dot_Pixel, LINE_STYLE.LINE_SOLID);
+            DrawLine(Xend2, Yend2, Xstart2, Yend2, Color, Dot_Pixel, LINE_STYLE.LINE_SOLID);
         }
     }
 
     //% blockId=DrawCircle
     //% blockGap=8
-    //% block="Draw Circle|X_Center %X_Center|Y_Center %Y_Center|Radius %Radius|Color %Color|Filled %Draw_Fill|Line width %number"
+    //% block="Draw Circle|X_Center %X_Center|Y_Center %Y_Center|Radius %Radius|Color %Color|Filled %Draw_Fill|Line width %Dot_Pixel"
     //% X_Center.min=1 X_Center.max=160 Y_Center.min=1 Y_Center.max=128
     //% Radius.min=0 Radius.max=160
     //% Color.min=0 Color.max=65535
     //% weight=120
-    export function DrawCircle(X_Center: number, Y_Center: number, Radius: number, Color: number, Draw_Fill: DRAW_FILL, number: number): void {
+    export function DrawCircle(X_Center: number, Y_Center: number, Radius: number, Color: number, Draw_Fill: DRAW_FILL, Dot_Pixel: DOT_PIXEL): void {
         //Draw a circle from(0, R) as a starting point
         let XCurrent = 0;
         let YCurrent = Radius;
@@ -181,14 +181,14 @@ namespace LCD1IN8{
         if (Draw_Fill == DRAW_FILL.DRAW_FULL) {//DrawPoint(Xpoint, Ypoint, GUI_BACKGROUND_COLOR, Line_width);
             while (XCurrent <= YCurrent) { //Realistic circles
                 for (sCountY = XCurrent; sCountY <= YCurrent; sCountY++) {
-                    DrawPoint(X_Center + XCurrent, Y_Center + sCountY, Color, 1);             //1
-                    DrawPoint(X_Center - XCurrent, Y_Center + sCountY, Color, 1);             //2
-                    DrawPoint(X_Center - sCountY, Y_Center + XCurrent, Color, 1);             //3
-                    DrawPoint(X_Center - sCountY, Y_Center - XCurrent, Color, 1);             //4
-                    DrawPoint(X_Center - XCurrent, Y_Center - sCountY, Color, 1);             //5
-                    DrawPoint(X_Center + XCurrent, Y_Center - sCountY, Color, 1);             //6
-                    DrawPoint(X_Center + sCountY, Y_Center - XCurrent, Color, 1);             //7
-                    DrawPoint(X_Center + sCountY, Y_Center + XCurrent, Color, 1);
+                    DrawPoint(X_Center + XCurrent, Y_Center + sCountY, Color, DOT_PIXEL.DOT_PIXEL_1);             //1
+                    DrawPoint(X_Center - XCurrent, Y_Center + sCountY, Color, DOT_PIXEL.DOT_PIXEL_1);             //2
+                    DrawPoint(X_Center - sCountY, Y_Center + XCurrent, Color, DOT_PIXEL.DOT_PIXEL_1);             //3
+                    DrawPoint(X_Center - sCountY, Y_Center - XCurrent, Color, DOT_PIXEL.DOT_PIXEL_1);             //4
+                    DrawPoint(X_Center - XCurrent, Y_Center - sCountY, Color, DOT_PIXEL.DOT_PIXEL_1);             //5
+                    DrawPoint(X_Center + XCurrent, Y_Center - sCountY, Color, DOT_PIXEL.DOT_PIXEL_1);             //6
+                    DrawPoint(X_Center + sCountY, Y_Center - XCurrent, Color, DOT_PIXEL.DOT_PIXEL_1);             //7
+                    DrawPoint(X_Center + sCountY, Y_Center + XCurrent, Color, DOT_PIXEL.DOT_PIXEL_1);
                 }
                 if (Esp < 0)
                     Esp += 4 * XCurrent + 6;
@@ -200,14 +200,14 @@ namespace LCD1IN8{
             }
         } else { //Draw a hollow circle
             while (XCurrent <= YCurrent) {
-                DrawPoint(X_Center + XCurrent, Y_Center + YCurrent, Color, number);             //1
-                DrawPoint(X_Center - XCurrent, Y_Center + YCurrent, Color, number);             //2
-                DrawPoint(X_Center - YCurrent, Y_Center + XCurrent, Color, number);             //3
-                DrawPoint(X_Center - YCurrent, Y_Center - XCurrent, Color, number);             //4
-                DrawPoint(X_Center - XCurrent, Y_Center - YCurrent, Color, number);             //5
-                DrawPoint(X_Center + XCurrent, Y_Center - YCurrent, Color, number);             //6
-                DrawPoint(X_Center + YCurrent, Y_Center - XCurrent, Color, number);             //7
-                DrawPoint(X_Center + YCurrent, Y_Center + XCurrent, Color, number);             //0
+                DrawPoint(X_Center + XCurrent, Y_Center + YCurrent, Color, Dot_Pixel);             //1
+                DrawPoint(X_Center - XCurrent, Y_Center + YCurrent, Color, Dot_Pixel);             //2
+                DrawPoint(X_Center - YCurrent, Y_Center + XCurrent, Color, Dot_Pixel);             //3
+                DrawPoint(X_Center - YCurrent, Y_Center - XCurrent, Color, Dot_Pixel);             //4
+                DrawPoint(X_Center - XCurrent, Y_Center - YCurrent, Color, Dot_Pixel);             //5
+                DrawPoint(X_Center + XCurrent, Y_Center - YCurrent, Color, Dot_Pixel);             //6
+                DrawPoint(X_Center + YCurrent, Y_Center - XCurrent, Color, Dot_Pixel);             //7
+                DrawPoint(X_Center + YCurrent, Y_Center + XCurrent, Color, Dot_Pixel);             //0
 
                 if (Esp < 0)
                     Esp += 4 * XCurrent + 6;
