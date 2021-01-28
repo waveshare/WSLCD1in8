@@ -11,19 +11,24 @@
 * | Info        :   Basic version
 *
 ******************************************************************************/
-#include "MicroBitPin.h"
-#include "mbed.h"
+// #include "MicroBitPin.h"
+#include "MicroBit.h"
 #include "LCD_Driver.h"
 #include "SPI_RAM.h"
 
 //spi
+// MicroBit uBit;
 SPI lcd_spi(MOSI, MISO, SCK);
 #define LCD_SPI_Write_Byte(value) lcd_spi.write(value)
+MicroBitPin LCD_RST(MICROBIT_ID_IO_P8, MICROBIT_PIN_P8, PIN_CAPABILITY_DIGITAL);
+MicroBitPin LCD_DC(MICROBIT_ID_IO_P12, MICROBIT_PIN_P12, PIN_CAPABILITY_DIGITAL);
+MicroBitPin LCD_CS(MICROBIT_ID_IO_P16, MICROBIT_PIN_P16, PIN_CAPABILITY_DIGITAL);
+// MicroBitPin LCD_CS(MICROBIT_ID_IO_P16, MICROBIT_PIN_P16, PIN_CAPABILITY_DIGITAL);
 
 //LCD
-DigitalOut LCD_RST(MICROBIT_PIN_P8);
-DigitalOut LCD_DC(MICROBIT_PIN_P12);
-DigitalOut LCD_CS(MICROBIT_PIN_P16);
+// DigitalOut LCD_RST(MICROBIT_PIN_P8);
+// DigitalOut LCD_DC(MICROBIT_PIN_P12);
+// DigitalOut LCD_CS(MICROBIT_PIN_P16);
 PwmOut LCD_BL(MICROBIT_PIN_P1);
 
 #define LCD_RST_0 LCD_RST = 0
