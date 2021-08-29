@@ -6,6 +6,7 @@
         "core": "*",
         "radio": "*"
     },
+    "disablesVariants": ["mbcodal"],
     "files": [
         "README.md",
         "LCD1in8.ts",
